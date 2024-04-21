@@ -56,9 +56,24 @@ const getInstance = async (id) => {
     return utils.handleHttpResponse(resp);
 }
 
+const createThingModel = async (data) => {
+    let url = `${CONSTANT.WEB_SERVER_URL}/${CONSTANT.VERSION}${CONSTANT.CREATE_MODEL}`;
+    const options = {
+        method: 'POST',
+        url,
+        data
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+}
+
 module.exports = {
     queryModels,
     getModel,
     queryInstances,
     getInstance,
+    createThingModel,
 };

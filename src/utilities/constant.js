@@ -15,6 +15,7 @@ const CONSTANT = {
   },
   QUERY_MODELS: `/tm/query`,
   GET_MODEL: `/tm/get/`,
+  CREATE_MODEL: `/tm`,
   QUERY_INSTANCES: `/ti/query/`,
   GET_INSTANCE: `/ti/get/`,
 }
