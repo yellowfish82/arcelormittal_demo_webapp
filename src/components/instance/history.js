@@ -22,6 +22,7 @@ class AMHistory extends React.Component {
     }
 
     render() {
+        console.log(this.props.info);
         const page = this.renderPage();
         return (
             <div>

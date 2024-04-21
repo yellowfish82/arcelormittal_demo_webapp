@@ -166,7 +166,7 @@ class AMModelCreate extends React.Component {
                     }}
                     dataSource={alertCondition}
                     renderItem={(item, i) => {
-                        console.log(item);
+                        // console.log(item);
                         let expressionMark = '';
                         switch (item.expression) {
                             case CONSTANT.CONDITION_EXPRESSION.LARGER:

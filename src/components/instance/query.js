@@ -52,7 +52,7 @@ class AMInstanceList extends React.Component {
                 width: '20%',
                 render: (_, record, i) => (
                     <Space size="middle">
-                        <Button onClick={this.detail}>明细</Button>
+                        <Button onClick={() => this.detail(record)}>查看</Button>
                     </Space>
                 ),
             },
@@ -92,9 +92,9 @@ class AMInstanceList extends React.Component {
         this.props.nav('AMInstanceRgister', this.state.models);
     }
 
-    detail = () => {
+    detail = (d) => {
         // this.props.nav('AMInstanceView', this.state.curInstance);
-        this.props.nav('AMInstanceView', { name: '设备名称' });
+        this.props.nav('AMInstanceView', d);
     }
 
     renderPage = () => {

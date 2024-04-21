@@ -84,6 +84,45 @@ const registerDevice = async (data) => {
     return utils.handleHttpResponse(resp);
 }
 
+const queryRTData = async (id) => {
+    let url = `${CONSTANT.WEB_SERVER_URL}/${CONSTANT.VERSION}${CONSTANT.DATA_REALTIME_ORIGINAL}${id}`;
+    const options = {
+        method: 'GET',
+        url,
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+}
+
+const queryHistoryData = async (condition) => {
+    let url = `${CONSTANT.WEB_SERVER_URL}/${CONSTANT.VERSION}${CONSTANT.DATA_HISTORY_ORIGINAL}${condition}`;
+    const options = {
+        method: 'GET',
+        url,
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+}
+
+const queryAlertData = async (condition) => {
+    let url = `${CONSTANT.WEB_SERVER_URL}/${CONSTANT.VERSION}${CONSTANT.DATA_ALERT}${condition}`;
+    const options = {
+        method: 'GET',
+        url,
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+}
+
 module.exports = {
     queryModels,
     getModel,
@@ -91,4 +130,7 @@ module.exports = {
     getInstance,
     createThingModel,
     registerDevice,
+    queryRTData,
+    queryHistoryData,
+    queryAlertData,
 };

@@ -13,12 +13,16 @@ const CONSTANT = {
     SMALLER: 4, // <
     SMALLER_EQUAL: 5, // <=
   },
+  REFRESH_FREQUENCY: 5000,
   QUERY_MODELS: `/tm/query`,
   GET_MODEL: `/tm/get/`,
   CREATE_MODEL: `/tm`,
   QUERY_INSTANCES: `/ti/query/`,
   GET_INSTANCE: `/ti/get/`,
   REGISTER_INSTANCE: `/ti`,
+  DATA_REALTIME_ORIGINAL: `/data/ot/rt/`,
+  DATA_HISTORY_ORIGINAL: `/data/ot/history/`,
+  DATA_ALERT: `/data/alert/`,
 }
 
 export default CONSTANT;
