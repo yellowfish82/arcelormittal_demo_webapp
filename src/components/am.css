@@ -1,0 +1,61 @@
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+.ant-progress-steps-item {
+  flex-shrink: 0;
+  min-width: 2 px;
+  margin-right: 2 px;
+  background: #ffffff;
+  transition: all 0.3s;
+}
+
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  color: #fff;
+  background: #c90000;
+  border-color: #c90000;
+}
+
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+  color: #fff;
+  background: #c90000;
+  border-color: #c90000;
+}
+
+.ant-radio-button-wrapper:hover {
+  position: relative;
+  color: #c90000;
+}
+
+:where(.css-dev-only-do-not-override-txh9fw).ant-menu-light .ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-txh9fw).ant-menu-light>.ant-menu .ant-menu-item-selected {
+  background-color: #c90000;
+}
+
+:where(.css-dev-only-do-not-override-txh9fw).ant-menu-light .ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-txh9fw).ant-menu-light>.ant-menu .ant-menu-item-selected {
+  color: #fff;
+}
+
+:where(.css-dev-only-do-not-override-txh9fw).ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+  border-color: #c90000;
+}
+
+:where(.css-dev-only-do-not-override-txh9fw).ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  z-index: 1;
+  color: #E91E63;
+  background: #ffffff;
+  border-color: #c90000;
+}
+
+.App {
+  text-align: left;
+}
