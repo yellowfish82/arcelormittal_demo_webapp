@@ -18,11 +18,11 @@ class AMDashboard extends React.Component {
             this.setState({ loading: true });
             const { ThingModels } = await hub.queryModels();
             const modelNum = ThingModels.length;
-            console.log(ThingModels);
+            // console.log(ThingModels);
 
             const { things } = await hub.queryInstances({});
             const instanceNum = things.length;
-            console.log(things);
+            // console.log(things);
 
             this.setState({ loading: false, modelNum, instanceNum });
         } catch (error) {
