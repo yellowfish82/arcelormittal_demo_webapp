@@ -5,24 +5,62 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     UploadOutlined,
-    UserOutlined,
+    DashboardOutlined,
     VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, Button, Spin, message } from 'antd';
+
+import AMBreadcrumb from './structure/breadcrumb';
+import AMContent from './structure/content';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 class ArcelorMittal extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { loading: true, };
+        this.state = {
+            loading: true,
+            items: [
+                {
+                    key: 'dashboard',
+                    icon: <DashboardOutlined />,
+                    label: '看板',
+                },
+                {
+                    key: 'model',
+                    icon: <UploadOutlined />,
+                    label: '物模型',
+                },
+                {
+                    key: 'instance',
+                    icon: <VideoCameraOutlined />,
+                    label: '物实例',
+                },
+            ]
+        };
+
+        this.navMap = {
+            dashboard: {
+                page: 'AMDashboard',
+                breadcrumb: ['看板']
+            },
+            model: {
+                page: 'AMModel',
+                breadcrumb: ['物模型']
+            },
+            instance: {
+                page: 'AMInstance',
+                breadcrumb: ['物实例']
+            },
+        }
     }
 
     async componentDidMount() {
         try {
             message.success('ArcelorMittal IIoT平台欢迎您！');
-            this.setState({ loading: false, collapsed: false, });
-            this.nav();
+            const { page, breadcrumb } = this.navMap[this.state.items[0].key];
+            this.setState({ loading: false, collapsed: false, page, breadcrumb });
 
         } catch (error) {
             console.log(error);
@@ -38,19 +76,18 @@ class ArcelorMittal extends React.Component {
         };
     }
 
-    nav = (targetPageInfo, targetTagValue) => {
-        this.setState({ loading: true });
-
-        this.setState({ loading: false });
-
+    nav = (page, breadcrumb) => {
+        this.setState({ page, breadcrumb });
     }
 
     setBreadcrumb = (breadcrumb) => {
         this.setState({ breadcrumb });
     }
 
-    setGlobalInfo = (globalInfo) => {
-        this.setState({ globalInfo });
+    onClickMenu = async (e) => {
+        // console.log(e);
+        const { page, breadcrumb } = this.navMap[e.key];
+        this.nav(page, breadcrumb);
     }
 
     setCollapsed = (collapsed) => {
@@ -58,7 +95,7 @@ class ArcelorMittal extends React.Component {
     }
 
     renderMainPage = () => {
-        const { loading, collapsed, } = this.state;
+        const { loading, collapsed, breadcrumb, items, page } = this.state;
 
         if (loading) {
             return (
@@ -83,28 +120,18 @@ class ArcelorMittal extends React.Component {
                     />
 
                     <div className="demo-logo-vertical" />
-                    <Menu
-                        theme="dark"
-                        mode="inline"
-                        defaultSelectedKeys={['1']}
-                        items={[
-                            {
-                                key: '1',
-                                icon: <UserOutlined />,
-                                label: 'nav 1',
-                            },
-                            {
-                                key: '2',
-                                icon: <VideoCameraOutlined />,
-                                label: 'nav 2',
-                            },
-                            {
-                                key: '3',
-                                icon: <UploadOutlined />,
-                                label: 'nav 3',
-                            },
-                        ]}
-                    />
+                    {
+                        items ?
+                            <Menu
+                                theme="dark"
+                                mode="inline"
+                                defaultSelectedKeys={[this.state.items[0].key]}
+                                items={items}
+                                onSelect={this.onClickMenu}
+                            />
+                            : <Spin />
+                    }
+
                 </Sider>
                 <Layout>
                     <Header style={{
@@ -119,14 +146,7 @@ class ArcelorMittal extends React.Component {
                     </Header>
 
 
-                    <Breadcrumb
-                        style={{
-                            margin: '0 16px',
-                        }}
-                    >
-                        <Breadcrumb.Item>User</Breadcrumb.Item>
-                        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                    </Breadcrumb>
+                    <AMBreadcrumb breadcrumb={breadcrumb} />
 
                     <Content
                         style={{
@@ -137,7 +157,7 @@ class ArcelorMittal extends React.Component {
                             background: '#ffffff'
                         }}
                     >
-                        Content
+                        <AMContent page={page} setBreadcrumb={this.setBreadcrumb}/>
                     </Content>
 
                     <Footer
