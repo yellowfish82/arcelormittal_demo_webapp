@@ -42,6 +42,7 @@ class AMModelList extends React.Component {
 
     async componentDidMount() {
         try {
+            // console.log(`AMModelList componentDidMount`);
             await this.query();
         } catch (error) {
             console.log(error);
