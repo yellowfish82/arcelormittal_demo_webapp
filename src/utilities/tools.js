@@ -1,7 +1,4 @@
 const axios = require('axios');
-const generateUniqueId = require('generate-unique-id');
-
-const CONSTANT = require('./constant').default;
 
 const invokeWebServer = async (options) => {
     try {
@@ -28,8 +25,6 @@ const invokeWebServer = async (options) => {
     }
 }
 
-const genUniqueId = () => generateUniqueId({ length: 16, });
-
 const handleHttpResponse = (resp) => {
     if (resp.status === 200) {
         return resp.data;
@@ -46,7 +41,6 @@ const authCheck = (globalInfo, mark) => {
 
 module.exports = {
     invokeWebServer,
-    genUniqueId,
     handleHttpResponse,
     authCheck,
 };
