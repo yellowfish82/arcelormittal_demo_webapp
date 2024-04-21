@@ -18,6 +18,7 @@ const CONSTANT = {
   CREATE_MODEL: `/tm`,
   QUERY_INSTANCES: `/ti/query/`,
   GET_INSTANCE: `/ti/get/`,
+  REGISTER_INSTANCE: `/ti`,
 }
 
 export default CONSTANT;

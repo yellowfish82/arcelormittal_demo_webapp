@@ -85,11 +85,11 @@ class AMInstanceList extends React.Component {
 
         console.log(devices);
 
-        this.setState({ loading: false, devices });
+        this.setState({ loading: false, devices, models: ThingModels });
     }
 
     register = () => {
-        this.props.nav('AMInstanceRgister');
+        this.props.nav('AMInstanceRgister', this.state.models);
     }
 
     detail = () => {

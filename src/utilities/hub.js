@@ -70,10 +70,25 @@ const createThingModel = async (data) => {
     return utils.handleHttpResponse(resp);
 }
 
+const registerDevice = async (data) => {
+    let url = `${CONSTANT.WEB_SERVER_URL}/${CONSTANT.VERSION}${CONSTANT.REGISTER_INSTANCE}`;
+    const options = {
+        method: 'POST',
+        url,
+        data
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+}
+
 module.exports = {
     queryModels,
     getModel,
     queryInstances,
     getInstance,
     createThingModel,
+    registerDevice,
 };
