@@ -83,7 +83,7 @@ class AMInstanceList extends React.Component {
             })
         });
 
-        console.log(devices);
+        // console.log(devices);
 
         this.setState({ loading: false, devices, models: ThingModels });
     }
