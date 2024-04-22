@@ -53,9 +53,10 @@ class AMInstanceView extends React.Component {
                     break;
                 default:
             }
+            // console.log('``````````````````````');
             return {
                 label: moment(ad.timestamp).format('YYYY-MM-DD HH:mm:ss SSS'),
-                children: `当前值：${payload[ad.name]} -- 参考值 ${expressionMark} ${ad.threshold.toFixed(2)} `
+                children: `${ad.name}当前值：${payload[ad.name]} -- 报警条件： ${expressionMark} ${ad.threshold.toFixed(2)} `
             }
         });
         this.setState({ ot, alertData: ad, loading: false });
