@@ -165,7 +165,7 @@ class ArcelorMittal extends React.Component {
                             textAlign: 'center',
                         }}
                     >
-                        Arcelor Mittal Demo ©{new Date().getFullYear()} Created by Terry
+                        FRWork IIoT平台 ©{new Date().getFullYear()} Created by FRWork Co.
                     </Footer>
                 </Layout>
             </Layout>
