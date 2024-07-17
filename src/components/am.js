@@ -58,7 +58,7 @@ class ArcelorMittal extends React.Component {
 
     async componentDidMount() {
         try {
-            message.success('ArcelorMittal IIoT平台欢迎您！');
+            message.success('FRWork IIoT平台欢迎您！');
             const { page, breadcrumb } = this.navMap[this.state.items[0].key];
             this.setState({ loading: false, collapsed: false, page, breadcrumb });
 
@@ -142,7 +142,7 @@ class ArcelorMittal extends React.Component {
                     }}
                     >
 
-                        <h1 style={{ textAlign: "center", backgroundColor: '#ffffff', margin: '16px 0' }}>Arcelor Mittal IIoT 演示</h1>
+                        <h1 style={{ textAlign: "center", backgroundColor: '#ffffff', margin: '16px 0' }}>FRWork lloT 平台</h1>
                     </Header>
 
 
