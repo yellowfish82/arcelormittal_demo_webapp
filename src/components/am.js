@@ -13,6 +13,8 @@ import { Breadcrumb, Layout, Menu, Button, Spin, message } from 'antd';
 import AMBreadcrumb from './structure/breadcrumb';
 import AMContent from './structure/content';
 
+import hub from '../utilities/hub';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 class ArcelorMittal extends React.Component {
@@ -94,6 +96,19 @@ class ArcelorMittal extends React.Component {
         this.setState({ collapsed });
     }
 
+    ollama = async () => {
+        try {
+            alert('ollama');
+            const resp = await hub.invokeOllama();
+
+            message.success(resp);
+
+        } catch (error) {
+            console.log(error);
+        };
+
+    }
+
     renderMainPage = () => {
         const { loading, collapsed, breadcrumb, items, page } = this.state;
 
@@ -106,7 +121,7 @@ class ArcelorMittal extends React.Component {
         return (
             <Layout style={{ minHeight: '100vh', borderRadius: '10px', }}>
                 <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <img src='logo192.png' style={{ width: '100%', height: '95px' }} />
+                    <img src='logo192.png' style={{ width: '100%', height: '95px', cursor: 'pointer' }} onClick={this.ollama} />
 
                     <Button
                         type="text"
@@ -157,7 +172,7 @@ class ArcelorMittal extends React.Component {
                             background: '#ffffff'
                         }}
                     >
-                        <AMContent page={page} setBreadcrumb={this.setBreadcrumb}/>
+                        <AMContent page={page} setBreadcrumb={this.setBreadcrumb} />
                     </Content>
 
                     <Footer

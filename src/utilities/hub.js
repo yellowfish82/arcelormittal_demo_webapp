@@ -123,6 +123,39 @@ const queryAlertData = async (condition) => {
     return utils.handleHttpResponse(resp);
 }
 
+const invokeOllama = async () => {
+    let url = `http://localhost:11434/`;
+    const options = {
+        method: 'GET',
+        url,
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+}
+
+const chatWithOllama = async (info) => {
+    let url = `http://localhost:11434/api/generate`;
+    const data = {
+        "model": "llama3",
+        "prompt": info,
+        "stream": false
+    };
+
+    const options = {
+        method: 'POST',
+        url,
+        data,
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+}
+
 module.exports = {
     queryModels,
     getModel,
@@ -133,4 +166,6 @@ module.exports = {
     queryRTData,
     queryHistoryData,
     queryAlertData,
+    invokeOllama,
+    chatWithOllama,
 };

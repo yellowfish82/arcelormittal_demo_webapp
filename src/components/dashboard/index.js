@@ -3,14 +3,16 @@ import {
     UploadOutlined,
     VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Divider, Spin, message, Row, Col, Card, Statistic } from 'antd';
+import { Divider, Spin, message, Row, Col, Card, Statistic, Input, Button } from 'antd';
+import ReactMarkdown from 'react-markdown/with-html';
 
 import hub from '../../utilities/hub';
 
+const { TextArea } = Input;
 class AMDashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loading: true };
+        this.state = { loading: true, ollama_chat: '' };
     }
 
     async componentDidMount() {
@@ -29,6 +31,27 @@ class AMDashboard extends React.Component {
             console.log(error);
             message.error(`${error}`);
         }
+    }
+
+    setValue = (c) => {
+        this.setState({ chat: c });
+    }
+
+    chat = async () => {
+        try {
+            this.setState({ chat_loading: true });
+            const { chat } = this.state;
+            message.info(chat);
+            const resp = await hub.chatWithOllama(chat);
+            const ollama_chat_resp = { __html: JSON.stringify(resp.response).replace(/\n/g, '<br>') };
+            message.success(ollama_chat_resp);
+
+            this.setState({ ollama_chat: ollama_chat_resp, chat_loading: false, });
+
+        } catch (error) {
+            console.log(error);
+            this.setState({ chat_loading: true });
+        };
     }
 
     renderPage = () => {
@@ -65,6 +88,26 @@ class AMDashboard extends React.Component {
                                 prefix={<VideoCameraOutlined />}
                             />
                         </Card>
+                    </Col>
+                </Row>
+
+                <Row gutter={16}>
+                    <Col span={12}>
+                        <TextArea
+                            onChange={(e) => this.setValue(e.target.value)}
+                            placeholder="Controlled autosize"
+                            autoSize={{
+                                minRows: 3,
+                                maxRows: 5,
+                            }}
+                        />
+                        <Divider>使用前确认本地已运行Ollama</Divider>
+                        <Button onClick={this.chat}>提问LLM</Button>
+                    </Col>
+                    <Col span={12}>
+                        <p>Ollama Robot</p>
+                        <Divider />
+                        {this.state.chat_loading ? <Spin /> : <div dangerouslySetInnerHTML={this.state.ollama_chat} />}
                     </Col>
                 </Row>
 
