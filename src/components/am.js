@@ -17,7 +17,7 @@ import hub from '../utilities/hub';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-class ArcelorMittal extends React.Component {
+class Dingjie extends React.Component {
     constructor(props) {
         super(props);
 
@@ -60,7 +60,7 @@ class ArcelorMittal extends React.Component {
 
     async componentDidMount() {
         try {
-            message.success('ArcelorMittal IIoT平台欢迎您！');
+            message.success('鼎捷软件IIoT平台欢迎您！');
             const { page, breadcrumb } = this.navMap[this.state.items[0].key];
             this.setState({ loading: false, collapsed: false, page, breadcrumb });
 
@@ -98,10 +98,10 @@ class ArcelorMittal extends React.Component {
 
     ollama = async () => {
         try {
-            alert('ollama');
-            const resp = await hub.invokeOllama();
+            // alert('ollama');
+            // const resp = await hub.invokeOllama();
 
-            message.success(resp);
+            // message.success(resp);
 
         } catch (error) {
             console.log(error);
@@ -121,7 +121,9 @@ class ArcelorMittal extends React.Component {
         return (
             <Layout style={{ minHeight: '100vh', borderRadius: '10px', }}>
                 <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <img src='logo192.png' style={{ width: '100%', height: '95px', cursor: 'pointer' }} onClick={this.ollama} />
+                    <img src='logo192.png'
+                        style={{ width: '100%', height: '95px', cursor: 'pointer', backgroundColor: 'white', border: '3px solid black', padding: '5px' }}
+                        onClick={this.ollama} />
 
                     <Button
                         type="text"
@@ -157,7 +159,7 @@ class ArcelorMittal extends React.Component {
                     }}
                     >
 
-                        <h1 style={{ textAlign: "center", backgroundColor: '#ffffff', margin: '16px 0' }}>Arcelor Mittal IIoT 演示</h1>
+                        <h1 style={{ textAlign: "center", backgroundColor: '#ffffff', margin: '16px 0' }}>鼎捷软件 IIoT 演示</h1>
                     </Header>
 
 
@@ -180,7 +182,7 @@ class ArcelorMittal extends React.Component {
                             textAlign: 'center',
                         }}
                     >
-                        Arcelor Mittal Demo ©{new Date().getFullYear()} Created by Terry
+                        鼎捷软件 Demo ©{new Date().getFullYear()} Created by Terry
                     </Footer>
                 </Layout>
             </Layout>
@@ -199,4 +201,4 @@ class ArcelorMittal extends React.Component {
 
 }
 
-export default ArcelorMittal;
+export default Dingjie;
