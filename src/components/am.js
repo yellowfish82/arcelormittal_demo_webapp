@@ -7,6 +7,7 @@ import {
     UploadOutlined,
     DashboardOutlined,
     VideoCameraOutlined,
+    CopyOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, Button, Spin, message } from 'antd';
 
@@ -37,6 +38,11 @@ class ArcelorMittal extends React.Component {
                     icon: <VideoCameraOutlined />,
                     label: '物实例',
                 },
+                {
+                    key: 'contract',
+                    icon: <CopyOutlined />,
+                    label: '合同管理',
+                },
             ]
         };
 
@@ -52,6 +58,10 @@ class ArcelorMittal extends React.Component {
             instance: {
                 page: 'AMInstance',
                 breadcrumb: ['物实例']
+            },
+            contract: {
+                page: 'AMContract',
+                breadcrumb: ['合同管理']
             },
         }
     }

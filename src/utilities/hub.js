@@ -123,6 +123,33 @@ const queryAlertData = async (condition) => {
     return utils.handleHttpResponse(resp);
 }
 
+
+const uploadContract = async (values, files) => {
+    const data = new FormData();
+
+    Object.keys(values).map(item => (
+        data.append(item, values[item])
+    ));
+
+    files.forEach(((f, idx) => {
+        console.log('fetch file data: ', idx);
+        data.append(`f_${idx}`, f.originFileObj);
+    }));
+
+    let url = `${CONSTANT.WEB_SERVER_URL}/${CONSTANT.VERSION}${CONSTANT.UPLOAD_CONTRACT}`;
+    const options = {
+        method: 'POST',
+        url,
+        data,
+    }
+
+    const resp = await utils.invokeWebServer(options);
+    // console.log(resp);
+
+    return utils.handleHttpResponse(resp);
+
+}
+
 module.exports = {
     queryModels,
     getModel,
@@ -133,4 +160,5 @@ module.exports = {
     queryRTData,
     queryHistoryData,
     queryAlertData,
+    uploadContract,
 };

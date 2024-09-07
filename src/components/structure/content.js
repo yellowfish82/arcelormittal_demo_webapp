@@ -5,6 +5,7 @@ import ComingSoon from '../comming';
 import AMDashboard from '../dashboard';
 import AMModel from '../model';
 import AMInstance from '../instance';
+import AMContract from '../contract';
 
 class AMContent extends React.Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class AMContent extends React.Component {
             AMDashboard: (<AMDashboard />),
             AMModel: (<AMModel setBreadcrumb={this.props.setBreadcrumb} />),
             AMInstance: (<AMInstance setBreadcrumb={this.props.setBreadcrumb} />),
+            AMContract: (<AMContract setBreadcrumb={this.props.setBreadcrumb} />),
         }
     }
 

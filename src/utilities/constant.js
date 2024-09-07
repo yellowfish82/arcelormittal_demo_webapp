@@ -23,6 +23,7 @@ const CONSTANT = {
   DATA_REALTIME_ORIGINAL: `/data/ot/rt/`,
   DATA_HISTORY_ORIGINAL: `/data/ot/history/`,
   DATA_ALERT: `/data/alert/`,
+  UPLOAD_CONTRACT: `/files/upload`,
 }
 
 export default CONSTANT;
