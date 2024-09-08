@@ -68,8 +68,8 @@ class ArcelorMittal extends React.Component {
 
     async componentDidMount() {
         try {
-            message.success('FRWork IIoT平台欢迎您！');
-            const { page, breadcrumb } = this.navMap[this.state.items[0].key];
+            message.success('IIoT平台欢迎您！');
+            const { page, breadcrumb } = this.navMap[this.state.items[3].key];
             this.setState({ loading: false, collapsed: false, page, breadcrumb });
 
         } catch (error) {
@@ -115,49 +115,7 @@ class ArcelorMittal extends React.Component {
 
         return (
             <Layout style={{ minHeight: '100vh', borderRadius: '10px', }}>
-                <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <img src='logo192.png' style={{ width: '100%', height: '95px' }} />
-
-                    <Button
-                        type="text"
-                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                        onClick={() => this.setCollapsed(!collapsed)}
-                        style={{
-                            fontSize: '16px',
-                            color: 'whitesmoke',
-                            float: 'right'
-                        }}
-                    />
-
-                    <div className="demo-logo-vertical" />
-                    {
-                        items ?
-                            <Menu
-                                theme="dark"
-                                mode="inline"
-                                defaultSelectedKeys={[this.state.items[0].key]}
-                                items={items}
-                                onSelect={this.onClickMenu}
-                            />
-                            : <Spin />
-                    }
-
-                </Sider>
                 <Layout>
-                    <Header style={{
-                        padding: 0,
-                        height: '95px',
-                        backgroundColor: 'whitesmoke',
-                        margin: '0 16px',
-                    }}
-                    >
-
-                        <h1 style={{ textAlign: "center", backgroundColor: '#ffffff', margin: '16px 0' }}>FRWork lloT 平台</h1>
-                    </Header>
-
-
-                    <AMBreadcrumb breadcrumb={breadcrumb} />
-
                     <Content
                         style={{
                             margin: '24px 16px',
@@ -170,13 +128,6 @@ class ArcelorMittal extends React.Component {
                         <AMContent page={page} setBreadcrumb={this.setBreadcrumb}/>
                     </Content>
 
-                    <Footer
-                        style={{
-                            textAlign: 'center',
-                        }}
-                    >
-                        FRWork IIoT平台 ©{new Date().getFullYear()} Created by FRWork Co.
-                    </Footer>
                 </Layout>
             </Layout>
         )
